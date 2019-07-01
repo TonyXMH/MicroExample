@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+import "github.com/micro/go-micro/api/proto/api.proto";
+
+service Example{
+    rpc Call(go.api.Request)returns(go.api.Response){};
+}
+
+service Foo{
+    rpc Bar(go.api.Request)returns(go.api.Response){};
+}
+
+//注意proto的语法，不要遗忘`;` returns 不要遗忘s
+//protoc -I=. -I=$GOPATH/src --go_out=. --micro_out=. api.proto
+//这里用的都是相对路径，要是在win下的话GOPATH输出的路径中的分隔符需要注意一下
+
+
+
